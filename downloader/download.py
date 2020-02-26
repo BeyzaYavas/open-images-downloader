@@ -95,7 +95,7 @@ def generate_download_list(annotations, labelmap, base_url):
 def download_objects_of_interest(download_list):
     def fetch_url(url):
         try:
-            urllib.request.urlretrieve(url, os.path.join(OUTPUT_DIR, url.split("/")[-1]))
+            urllib.request.urlretrieve(url.replace("\\", "/"), os.path.join(OUTPUT_DIR, url.split("\\")[-1]))
             return url, None
         except Exception as e:
             return None, e
